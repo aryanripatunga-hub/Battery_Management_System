@@ -13,32 +13,23 @@ A discrete 3S LiPo Battery Management System built on perfboard using an STM32 N
 
 ## System Architecture
 
-┌─────────────────────────────────────────────────────┐
-│           3S LiPo Cell Holder (3 × 3.7V)            │
-│         B+      VC2 tap    VC1 tap      B−          │
-└───┬─────────────────┬──────────┬──────────┬─────────┘
-    │                 │          │          │
-┌───▼─────────────────▼──────────▼──────────▼─────────┐
-│               Sensing circuits (perfboard)          │
-│                                                     │
-│  Resistor dividers      NTC thermistors × 3         │
-│  (per-cell voltage)     (per-cell temperature)      │
-│                                                     │
-│  INA219 current sensor  (I2C, 0.1Ω onboard shunt)   │
-└───────────────────────┬─────────────────────────────┘
-                        │ ADC + I2C
-┌───────────────────────▼──────────────────────────────┐
-│             STM32 Nucleo F446RE (84 MHz)             │
-│                                                      │
-│  ReadVoltages()    ReadTemperatures()                │
-│  ReadCurrent()     ProtectionCheck()                 │
-│  UpdateBalancing()                                   │
-└───────────────────────┬──────────────────────────────┘
-                        │ GPIO
-┌───────────────────────▼──────────────────────────────┐
-│  IRLZ44N protection MOSFET  +  IRLZ44N balance FETs  │
-│  Fault → FET OFF → load disconnected                 │
-└──────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A["3S LiPo Battery Pack<br/>3 × 3.7 V cells"]
+    B["Sensing Circuits<br/>Cell voltage dividers<br/>3 × NTC thermistors<br/>INA219 current sensor"]
+    C["STM32 Nucleo-F446RE<br/>84 MHz"]
+    D["Firmware Processing<br/>ReadVoltages()<br/>ReadTemperatures()<br/>ReadCurrent()<br/>ProtectionCheck()<br/>UpdateBalancing()"]
+    E["GPIO Control"]
+    F["Protection MOSFET<br/>Load disconnect on fault"]
+    G["Cell-balancing MOSFETs"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    D --> G
+```
 
 ## Key Features
 
