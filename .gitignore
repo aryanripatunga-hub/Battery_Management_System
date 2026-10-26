@@ -1,0 +1,26 @@
+# Keil build outputs
+*.o
+*.d
+*.axf
+*.hex
+*.elf
+*.map
+*.lst
+*.crf
+*.dep
+*.lnp
+
+# Keil user settings
+*.uvguix.*
+*.uvoptx
+
+# Python and Node.js
+__pycache__/
+.venv/
+venv/
+node_modules/
+
+# Secrets
+.env
+.env.*
+!.env.example

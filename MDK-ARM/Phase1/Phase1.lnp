@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp.sp
+"phase1\startup_stm32f446xx.o"
+"phase1\main.o"
+"phase1\stm32f4xx_it.o"
+"phase1\stm32f4xx_hal_msp.o"
+"phase1\stm32f4xx_hal_adc.o"
+"phase1\stm32f4xx_hal_adc_ex.o"
+"phase1\stm32f4xx_hal_rcc.o"
+"phase1\stm32f4xx_hal_rcc_ex.o"
+"phase1\stm32f4xx_hal_flash.o"
+"phase1\stm32f4xx_hal_flash_ex.o"
+"phase1\stm32f4xx_hal_flash_ramfunc.o"
+"phase1\stm32f4xx_hal_gpio.o"
+"phase1\stm32f4xx_hal_dma_ex.o"
+"phase1\stm32f4xx_hal_dma.o"
+"phase1\stm32f4xx_hal_pwr.o"
+"phase1\stm32f4xx_hal_pwr_ex.o"
+"phase1\stm32f4xx_hal_cortex.o"
+"phase1\stm32f4xx_hal.o"
+"phase1\stm32f4xx_hal_exti.o"
+"phase1\stm32f4xx_hal_i2c.o"
+"phase1\stm32f4xx_hal_i2c_ex.o"
+"phase1\stm32f4xx_hal_uart.o"
+"phase1\system_stm32f4xx.o"
+--strict --scatter "Phase1\Phase1.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Phase1.map" -o Phase1\Phase1.axf
