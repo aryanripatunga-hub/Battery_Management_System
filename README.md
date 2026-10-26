@@ -63,6 +63,7 @@ flowchart TD
 
 ### Repository Structure
 
+```
 BMS/
 ├── Core/
 │   ├── Inc/
@@ -73,9 +74,11 @@ BMS/
 ├── MDK-ARM/
 ├── ESP32_BMS_dashboard/
 │   └── ESP32_BMS_dashboard.ino
+├── Presentation
 ├── Phase1.ioc
 ├── .gitignore
 └── README.md
+```
 
 ### Debug — Keil Watch Window
 
